@@ -12,9 +12,10 @@ import pandas as pd
 import recbole.evaluator.collector as recb_collector
 from recbole.utils import get_model
 from recbole.evaluator import Evaluator
-from recbole.data import create_dataset, data_preparation
+from recbole.data import data_preparation
 
 import cpfair_robust.utils as utils
+from cpfair_robust.data import Dataset
 
 
 def old_extract_best_metrics(_exp_paths, best_exp_col, evaluator, data, config=None, additional_cols=None):
@@ -500,7 +501,19 @@ def extract_metrics_from_perturbed_edges(exp_info: dict,
 
             config['data_path'] = config['data_path'].replace('\\', os.sep)
 
-            dataset = create_dataset(config)
+            if "alpha" not in config["train_neg_sample_args"]:
+                config["train_neg_sample_args"]['alpha'] = 1.0
+            if "sample_num" not in config["train_neg_sample_args"]:
+                config["train_neg_sample_args"]['sample_num'] = 1
+            config["valid_neg_sample_args"] = config["valid_neg_sample_args"] or {'distribution': 'uniform'}
+            config["test_neg_sample_args"] = config["test_neg_sample_args"] or {'distribution': 'uniform'}
+            config["single_spec"] = True
+            config["local_rank"] = 0
+            config["worker"] = 0
+            if isinstance(config["eval_args"]["mode"], str):
+                config["eval_args"]["mode"] = {"valid": config["eval_args"]["mode"],
+                                               "test": config["eval_args"]["mode"]}
+            dataset = Dataset(config)
             uid_field = dataset.uid_field
             iid_field = dataset.iid_field
 

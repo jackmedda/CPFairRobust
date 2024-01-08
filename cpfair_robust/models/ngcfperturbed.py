@@ -8,7 +8,7 @@ import torch.nn.functional as F
 
 sys.path.append('..')
 
-from cpfair_robust.models import NGCF
+from .ngcf import NGCF
 from cpfair_robust.models import PerturbedModel
 
 

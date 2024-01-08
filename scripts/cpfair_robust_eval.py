@@ -4,6 +4,7 @@ import yaml
 import pickle
 import argparse
 
+import tqdm
 import scipy
 import torch
 import numpy as np
@@ -289,7 +290,7 @@ if __name__ == "__main__":
         candidate_edges_size = (dataset.user_num - 1) * (dataset.item_num - 1) - train_data.dataset.inter_num
     else:
         candidate_edges_size = train_data.dataset.inter_num
-    for ee in exps[0]:
+    for ee in tqdm.tqdm(exps[0], desc="Extracting metrics for each explanation epoch"):
         if ee == utils._EXPS_END_EPOCHS_STUB:
             continue
 

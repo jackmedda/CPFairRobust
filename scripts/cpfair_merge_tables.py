@@ -428,6 +428,8 @@ if __name__ == "__main__":
 
     delta_total_df_gby = delta_total_df.groupby("Dataset")
     for dset in dataset_order:
+        if dset not in delta_total_df_gby.groups:
+            continue
         delta_total_dset_df = delta_total_df_gby.get_group(dset)
         delta_total_dset_df_gby = delta_total_dset_df.groupby("Stakeholder")
 
