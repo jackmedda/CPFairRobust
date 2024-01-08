@@ -27,23 +27,6 @@ pip install torch-scatter -f https://data.pyg.org/whl/torch-1.12.0+${CUDA}.html
 where `${CUDA}` should be replaced by either `cpu`, `cu***`, where `***` represents the
 CUDA version, e.g. 116, 117.
 
-__NOTE!__ \
-The Recbole version (1.0.1) does not support the usage of custom dataset splits like ours,
-and we cannot guarantee that, even if provided in new versions, it will match our
-modification. To run our experiments the file _recbole/data/dataset/dataset.py_ should
-be replaced by the [modified_recbole_dataset.py](modified_recbole_dataset.py) file. In Linux:
-```bash
-cp modified_recbole_dataset.py /usr/local/lib/python3.9/dist-packages/recbole/data/dataset/dataset.py
-```
-
-The same version contains a bug related to the NGCF model. A Dropout layer is instantiated inside
-the `forward` method, which makes the generation of new embeddings (after the perturbation) not reproducible
-even if `eval` is called on the model. To run our experiments the file _recbole/model/general_recommender/ngcf.py_ should
-be replaced by the [modified_recbole_ngcf.py](modified_recbole_ngcf.py) file. In Linux:
-```bash
-cp modified_recbole_ngcf.py /usr/local/lib/python3.9/dist-packages/recbole/model/general_recommender/ngcf.py
-```
-
 # Datasets
 
 The datasets used in our experiments are MovieLens 1M, Last.FM 1K, Insurance and
