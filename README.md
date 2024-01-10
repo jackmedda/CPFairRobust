@@ -10,6 +10,28 @@ GCMC, LightGCN and NGCF, all provided in the [Recbole](https://github.com/RUCAIB
 library, from which CPFairRobust depend on for the data handling, the training and evaluation.
 Instead, the provided models are independent of the Recbole library.
 
+# Cite
+
+This repository contains the source code of the paper [Robustness in Fairness against Edge-level Perturbations in GNN-based Recommendation]().
+
+If you find this repostiory useful for your research or development cite our paper as
+
+```bibtex
+@inproceedings{conf/ecir/BorattoFFMM24,
+  author       = {Ludovico Boratto and
+                  Francesco Fabbri and
+                  Gianni Fenu and
+                  Mirko Marras and
+                  Giacomo Medda},
+  title        = {Robustness in Fairness against Edge-level Perturbations in GNN-based Recommendation},
+  booktitle    = {Advances in Information Retrieval - 46th European Conference on {IR}
+                  Research, {ECIR} 2024, Glasgow, Scotland, March 24-28, 2024},
+  series       = {Lecture Notes in Computer Science},
+  publisher    = {Springer},
+  year         = {2024},
+}
+```
+
 # Requirements
 Our framework was tested on Python 3.9 with the libraries listed in the
 [requirements.txt](cpfair_robust/requirements.txt) that can be installed with:
@@ -27,7 +49,7 @@ pip install torch-scatter -f https://data.pyg.org/whl/torch-1.12.0+${CUDA}.html
 where `${CUDA}` should be replaced by either `cpu`, `cu***`, where `***` represents the
 CUDA version, e.g. 116, 117.
 
-# Datasets
+# Datasets [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7602406.svg)](https://doi.org/10.5281/zenodo.7602406)
 
 The datasets used in our experiments are MovieLens 1M, Last.FM 1K, Insurance and
 can be downloaded from [Zenodo](https://doi.org/10.5281/zenodo.7602406).
