@@ -10,6 +10,28 @@ GCMC, LightGCN and NGCF, all provided in the [Recbole](https://github.com/RUCAIB
 library, from which CPFairRobust depend on for the data handling, the training and evaluation.
 Instead, the provided models are independent of the Recbole library.
 
+# Cite
+
+This repository contains the source code of the paper [Robustness in Fairness against Edge-level Perturbations in GNN-based Recommendation]().
+
+If you find this repostiory useful for your research or development cite our paper as
+
+```bibtex
+@inproceedings{conf/ecir/BorattoFFMM24,
+  author       = {Ludovico Boratto and
+                  Francesco Fabbri and
+                  Gianni Fenu and
+                  Mirko Marras and
+                  Giacomo Medda},
+  title        = {Robustness in Fairness against Edge-level Perturbations in GNN-based Recommendation},
+  booktitle    = {Advances in Information Retrieval - 46th European Conference on {IR}
+                  Research, {ECIR} 2024, Glasgow, Scotland, March 24-28, 2024},
+  series       = {Lecture Notes in Computer Science},
+  publisher    = {Springer},
+  year         = {2024},
+}
+```
+
 # Requirements
 Our framework was tested on Python 3.9 with the libraries listed in the
 [requirements.txt](cpfair_robust/requirements.txt) that can be installed with:
