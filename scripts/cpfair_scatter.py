@@ -128,11 +128,11 @@ if __name__ == "__main__":
                 ax.xaxis.grid(True, ls=':', lw=2)
                 ax.yaxis.grid(True, ls=':', lw=2)
 
-                if i == (len(dataset_order) - 1):
-                    labelpad = 105 if sk == "C" else 30
-                    ax.set_xlabel(ax.get_xlabel(), labelpad=labelpad)
-                else:
-                    ax.set_xlabel('')
+                # if i == (len(dataset_order) - 1):
+                #     labelpad = 105 if sk == "C" else 30
+                #     ax.set_xlabel(ax.get_xlabel(), labelpad=labelpad)
+                # else:
+                ax.set_xlabel('')
                 if j > 0 or sk == "P":
                     ax.set_ylabel('')
                 else:
@@ -143,8 +143,16 @@ if __name__ == "__main__":
                     ax.set_title(mod)
                 if i < (len(dataset_order) - 1):
                     ax.tick_params(labelbottom=False)
+                else:
+                    xlim_offset = 1.1
+                    xlim = ax.get_xlim()
+                    ax.set_xlim((xlim[0] * xlim_offset, xlim[1] * xlim_offset))
                 if j > 0:
                     ax.tick_params(labelleft=False)
+                else:
+                    ylim_offset = 1.1 if sk == "C" else 1.5
+                    ylim = ax.get_ylim()
+                    ax.set_ylim((ylim[0] * ylim_offset, ylim[1] * ylim_offset))
 
                 ax.xaxis.set_major_locator(mpl_tickers.MaxNLocator(4 if sk == "C" else 2))
 

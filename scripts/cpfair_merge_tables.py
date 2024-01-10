@@ -426,6 +426,11 @@ if __name__ == "__main__":
     plt.rc('xtick', labelsize=15)
     plt.rc('ytick', labelsize=16)
 
+    xlims = {
+        "GCMC": (3 * -10 ** 2, 10 ** 5 - 1),
+        "LGCN": (3 * -10 ** 2, 10 ** 5 - 1),
+        "NGCF": (3 * -10 ** 2, 10 ** 5 - 1)
+    }
     delta_total_df_gby = delta_total_df.groupby("Dataset")
     for dset in dataset_order:
         if dset not in delta_total_df_gby.groups:
@@ -434,7 +439,7 @@ if __name__ == "__main__":
         delta_total_dset_df_gby = delta_total_dset_df.groupby("Stakeholder")
 
         handles, labels = None, None
-        fig = plt.figure(figsize=(6 * len(models_order), 3), constrained_layout=True)
+        fig = plt.figure(figsize=(6 * len(models_order), 2.8 if dset == 'LF1K' else 3), constrained_layout=True)
         height_ratios = (2, 1)
         gs = fig.add_gridspec(
             2, len(models_order),  height_ratios=height_ratios,
@@ -473,10 +478,6 @@ if __name__ == "__main__":
         for row in range(gs.nrows):
             for col in range(gs.ncols):
                 ax = fig.axes[row * gs.ncols + col]
-                if sk == 'Consumer':
-                    ax.tick_params(labelbottom=False)
-                    if col == 0:
-                        ax.set(title=models_order[row])
 
                 if row < (gs.nrows - 1):
                     ax.tick_params(bottom=False, labelbottom=False)
@@ -489,10 +490,14 @@ if __name__ == "__main__":
                 ax.xaxis.grid(True)
                 ax.yaxis.grid(True)
                 ax.autoscale(False)
-                xlim = ax.get_xlim()
-                ax.set_xlim((xlim[0] * (0.2 if dset == "INS" else 1), xlim[1] * 1.5))
-                if dset == "ML1M":
-                    ax.set_xlim((xlim[0] * 0.9, xlim[1] * 1.48))
+                # print(dset, sk, models_order[col], ax.get_xlim())
+                ax.set_xlim(xlims[models_order[col]])
+                if dset != "ML1M":
+                    ax.tick_params(bottom=False, labelbottom=False)
+                # xlim = ax.get_xlim()
+                # ax.set_xlim((xlim[0] * (0.2 if dset == "INS" else 1), xlim[1] * 1.5))
+                # if dset == "ML1M":
+                #     ax.set_xlim((xlim[0] * 0.9, xlim[1] * 1.48))
                 ax.plot([0, 0], list(ax.get_ylim()), "k", ls='-', lw=3, clip_on=False)
 
         handles, labels = map(list, zip(*[(h, l) for i, (h, l) in enumerate(zip(handles, labels)) if l not in labels[:i]]))
