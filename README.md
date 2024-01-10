@@ -27,7 +27,7 @@ pip install torch-scatter -f https://data.pyg.org/whl/torch-1.12.0+${CUDA}.html
 where `${CUDA}` should be replaced by either `cpu`, `cu***`, where `***` represents the
 CUDA version, e.g. 116, 117.
 
-# Datasets
+# Datasets [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7602406.svg)](https://doi.org/10.5281/zenodo.7602406)
 
 The datasets used in our experiments are MovieLens 1M, Last.FM 1K, Insurance and
 can be downloaded from [Zenodo](https://doi.org/10.5281/zenodo.7602406).
