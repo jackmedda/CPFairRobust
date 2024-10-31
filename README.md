@@ -88,7 +88,7 @@ eval_args:
     mode: 'full'
 ```
 where `LRS` (Load Ready Splits) is not a Recbole split type, but it is added in
-our _modified_recbole_dataset.py_ to support custom data splits.
+our extended Dataset class to support custom data splits.
 
 The description of each parameter in the __explaining__ config type can be found in the
 relative files. In particular, for the explainer_policies:
