@@ -120,7 +120,7 @@ The edges addition or deletion is decided by the following parameter:
 
 The recommender systems need first to be trained:
 ```bash
-python -m CPFairRobust.main --run train --model MODEL --dataset DATASET --config_file_list config/TRAINING_CONFIG.yaml
+python -m cpfair_robust.main --run train --model MODEL --dataset DATASET --config_file_list config/TRAINING_CONFIG.yaml
 ```
 where __MODEL__ should be one of [GCMC, LightGCN, NGCF], __DATASET__ should match the folder
 of dataset, e.g. insurance, ml-1m, __TRAINING_CONFIG__ should be a config file of the
