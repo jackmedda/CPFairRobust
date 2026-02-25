@@ -164,3 +164,6 @@ python scripts/cpfair_robust_eval.py --e cpfair_robust/experiments/dp_explanatio
 ```
 where the argument --e stands for the path of a specific experiment.
 The other files starting with __cpfair__ are used to generate specific plots of the paper.
+
+## Acknowledgments
+This project was supported by the project PHaSE - Promoting Healthy and Sustainable Eating through Interactive and Explainable AI Methods, funded by MUR under the PRIN 2022 program (CUP H53D23003530006).
